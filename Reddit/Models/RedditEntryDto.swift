@@ -9,6 +9,7 @@
 import Foundation
 
 struct RedditEntryDto: Decodable {
+    let storageKey = String(describing: RedditEntryDto.self)
     var id: String
     var author: String
     var title: String
@@ -18,6 +19,20 @@ struct RedditEntryDto: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case id, author, title, createdUtc = "created_utc", thumbnail, numComments = "num_comments"
+    }
+    
+    func buildComments() -> String {
+        return "\(self.numComments) \(self.numComments > 1 ? "comments" : "comment")"
+    }
+}
+
+extension RedditEntryDto {
+    func wasSeen() -> Bool {
+        return UserDefaults.standard.bool(forKey: "\(storageKey)-\(self.id)")
+    }
+    
+    func setSeen() {
+        UserDefaults.standard.set(true, forKey: "\(storageKey)-\(self.id)")
     }
 }
 

@@ -40,7 +40,13 @@ class RedditEntryTableViewCell: UITableViewCell {
         self.model = model
         
         self.titleLabel.text = model.title
+        self.commentsLabel.text = model.buildComments()
+        self.dateLabel.text = model.createdUtc.timeAgo()
         self.usernameLabel.text = model.author
+        self.wasSeenIndicatorView.isHidden = model.wasSeen()
+        if let thumbnail = model.thumbnail {
+            self.avatarImageView.setImageFrom(string: thumbnail)
+        }
     }
     
     @IBAction func didTapDismissButton(_ sender: Any) {
