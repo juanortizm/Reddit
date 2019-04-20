@@ -48,9 +48,6 @@ class RedditEntryListViewController: RedditBaseViewController {
         self.entriesTableView.delegate = self
         self.entriesTableView.tableFooterView = UIView()
         
-        let nibCell = UINib(nibName: String(describing: RedditEntryTableViewCell.self), bundle: Bundle(for: RedditEntryTableViewCell.self))
-        self.entriesTableView.register(nibCell, forCellReuseIdentifier: String(describing: RedditEntryTableViewCell.self))
-        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshFetch), for: .valueChanged)
         self.entriesTableView.refreshControl = refreshControl
@@ -120,13 +117,27 @@ extension RedditEntryListViewController: UITableViewDataSource {
 
 extension RedditEntryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = entriesTableView.cellForRow(at: indexPath) as? RedditEntryTableViewCell else { return }
         self.entriesTableView.deselectRow(at: indexPath, animated: true)
-        self.showDetailViewController(RedditEntryDetailViewController(), sender: nil)
+        self.datasource[indexPath.row].setSeen()
+        cell.wasSeenIndicatorView.isHidden = true
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == datasource.count - 1 {
             loadMore()
         }
+    }
+}
+
+extension RedditEntryListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard "DetailSegue" == segue.identifier,
+              let indexPath = entriesTableView.indexPathForSelectedRow,
+              let redditDetailViewController = (segue.destination as? UINavigationController)?.topViewController as? RedditEntryDetailViewController else {
+            return
+        }
+        
+        redditDetailViewController.model = datasource[indexPath.row]
     }
 }

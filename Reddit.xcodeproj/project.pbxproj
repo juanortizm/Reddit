@@ -29,7 +29,6 @@
 		17EA70E9226B80F20012B2DF /* RedditEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA70E8226B80F20012B2DF /* RedditEntriesPresenter.swift */; };
 		17EA70EB226B813A0012B2DF /* RedditEntriesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA70EA226B813A0012B2DF /* RedditEntriesViewProtocol.swift */; };
 		17EA70F1226B83810012B2DF /* RedditEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA70F0226B83810012B2DF /* RedditEntryTableViewCell.swift */; };
-		17EA70F3226B84C50012B2DF /* RedditEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17EA70F2226B83830012B2DF /* RedditEntryTableViewCell.xib */; };
 		17EA70F5226B855A0012B2DF /* RedditImageViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA70F4226B855A0012B2DF /* RedditImageViewDecorator.swift */; };
 		17EA70F7226B857B0012B2DF /* RedditDateDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA70F6226B857B0012B2DF /* RedditDateDecorator.swift */; };
 		60FD45890BD6C931FF5D9088 /* Pods_Reddit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA47BCD9ED92FED94A7AEBC /* Pods_Reddit.framework */; };
@@ -71,7 +70,6 @@
 		17EA70E8226B80F20012B2DF /* RedditEntriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditEntriesPresenter.swift; sourceTree = "<group>"; };
 		17EA70EA226B813A0012B2DF /* RedditEntriesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditEntriesViewProtocol.swift; sourceTree = "<group>"; };
 		17EA70F0226B83810012B2DF /* RedditEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditEntryTableViewCell.swift; sourceTree = "<group>"; };
-		17EA70F2226B83830012B2DF /* RedditEntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedditEntryTableViewCell.xib; sourceTree = "<group>"; };
 		17EA70F4226B855A0012B2DF /* RedditImageViewDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditImageViewDecorator.swift; sourceTree = "<group>"; };
 		17EA70F6226B857B0012B2DF /* RedditDateDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditDateDecorator.swift; sourceTree = "<group>"; };
 		2F6C63325009568690B46D13 /* Pods-RedditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedditTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedditTests/Pods-RedditTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				17EA70F0226B83810012B2DF /* RedditEntryTableViewCell.swift */,
-				17EA70F2226B83830012B2DF /* RedditEntryTableViewCell.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -315,7 +312,6 @@
 			files = (
 				17EA70B3226B78D40012B2DF /* LaunchScreen.storyboard in Resources */,
 				17EA70B0226B78D40012B2DF /* Assets.xcassets in Resources */,
-				17EA70F3226B84C50012B2DF /* RedditEntryTableViewCell.xib in Resources */,
 				17EA70AE226B78D20012B2DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
