@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Aa-2m-UCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791" y="-524"/>
+            <point key="canvasLocation" x="674" y="-545"/>
         </scene>
         <!--Reddit Entry List View Controller-->
         <scene sceneID="rtz-Xq-xEb">
@@ -33,14 +33,42 @@
                     <view key="view" contentMode="scaleToFill" id="0cZ-kZ-quK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94859375570000004" green="1" blue="0.40063914309999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Far-Mz-eVz">
+                                <rect key="frame" x="0.0" y="64" width="375" height="555"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V16-lZ-fjw">
+                                <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="g3O-aH-p6E"/>
+                                </constraints>
+                                <state key="normal" title="Dismiss All">
+                                    <color key="titleColor" red="1" green="0.7390819918" blue="0.4841474496" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="V16-lZ-fjw" firstAttribute="top" secondItem="Far-Mz-eVz" secondAttribute="bottom" id="NT6-MA-Gmf"/>
+                            <constraint firstItem="Far-Mz-eVz" firstAttribute="leading" secondItem="7hS-7J-AkA" secondAttribute="leading" id="XXn-Cx-Zyk"/>
+                            <constraint firstItem="Far-Mz-eVz" firstAttribute="top" secondItem="7hS-7J-AkA" secondAttribute="top" id="dRc-hF-1SM"/>
+                            <constraint firstItem="7hS-7J-AkA" firstAttribute="trailing" secondItem="Far-Mz-eVz" secondAttribute="trailing" id="lNL-KC-ePM"/>
+                            <constraint firstItem="V16-lZ-fjw" firstAttribute="leading" secondItem="7hS-7J-AkA" secondAttribute="leading" id="rLC-Hx-tg0"/>
+                            <constraint firstItem="7hS-7J-AkA" firstAttribute="trailing" secondItem="V16-lZ-fjw" secondAttribute="trailing" id="rVB-ru-FKv"/>
+                            <constraint firstItem="7hS-7J-AkA" firstAttribute="bottom" secondItem="V16-lZ-fjw" secondAttribute="bottom" id="waa-ma-GRS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7hS-7J-AkA"/>
                     </view>
                     <navigationItem key="navigationItem" id="Eus-J7-WRj"/>
+                    <connections>
+                        <outlet property="entriesTableView" destination="Far-Mz-eVz" id="OY6-mQ-xTc"/>
+                        <segue destination="ZkC-xz-lhO" kind="showDetail" id="u3P-Hw-mSp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZmE-Nx-rqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="-525"/>
+            <point key="canvasLocation" x="1689" y="-546"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aKH-UO-eXF">
@@ -56,7 +84,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8af-jK-ddT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="790" y="205"/>
+            <point key="canvasLocation" x="1689" y="311"/>
         </scene>
         <!--Reddit Entry Detail View Controller-->
         <scene sceneID="Oxq-mm-PdK">
@@ -72,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzY-Iv-MvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1921" y="205"/>
+            <point key="canvasLocation" x="2775" y="311"/>
         </scene>
         <!--Reddit Split View Controller-->
         <scene sceneID="cNe-VP-5pi">
@@ -88,4 +116,7 @@
             <point key="canvasLocation" x="-161" y="-192"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="u3P-Hw-mSp"/>
+    </inferredMetricsTieBreakers>
 </document>
