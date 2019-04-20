@@ -35,6 +35,9 @@ class RedditEntryDetailViewController: RedditBaseViewController {
             self.avatarImageView.setImageFrom(string: thumbnail)
         }
     }
+}
+
+extension RedditEntryDetailViewController {
     
     // didTapAvatarImageView: save image in photos gallery
     @IBAction func didTapAvatarImageView(_ sender: Any) {
@@ -70,9 +73,4 @@ class RedditEntryDetailViewController: RedditBaseViewController {
     @objc private func didTapPostsView() {
         self.dismiss(animated: true, completion: nil)
     }
-}
-
-extension RedditEntryDetailViewController {
-    
-    
 }
