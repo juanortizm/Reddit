@@ -88,7 +88,7 @@ extension RedditEntryListViewController: RedditEntriesViewProtocol {
     
     func fetchFinishWithError(error: RedditNetworkResult.RedditNetworkError) {
         self.hideSpinner()
-        self.showGenericAlert()
+        self.showAlert(title: "Error Retreiving entries")
     }
 }
 

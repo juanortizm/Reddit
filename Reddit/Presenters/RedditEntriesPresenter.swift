@@ -18,12 +18,13 @@ class RedditEntriesPresenter {
     }
     
     internal func fetchEntries(limit: Int? = 50, lastEntryId: String? = nil) {
-        self.service.fetchEntries(limit: limit, lastEntryId: lastEntryId) { result in
+        self.service.fetchEntries(limit: limit, lastEntryId: lastEntryId) { [weak self] result in
+            guard let strongSelf = self else { return }
             switch result {
             case .success(let entries):
-                self.attachedView.fetchFinishWithSuccess(entries: entries, isLoadMore: lastEntryId != nil)
+                strongSelf.attachedView.fetchFinishWithSuccess(entries: entries, isLoadMore: lastEntryId != nil)
             case .failure(let error):
-                self.attachedView.fetchFinishWithError(error: error)
+                strongSelf.attachedView.fetchFinishWithError(error: error)
             }
         }
     }

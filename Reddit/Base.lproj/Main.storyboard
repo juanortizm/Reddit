@@ -241,10 +241,14 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-0K-aaf">
                                                         <rect key="frame" x="162.5" y="0.0" width="50" height="50"/>
+                                                        <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" placeholder="YES" id="J43-yo-c7d"/>
                                                             <constraint firstAttribute="height" constant="50" placeholder="YES" id="wbh-j4-qgh"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="5hm-ep-SP6" appends="YES" id="hH5-kc-lRb"/>
+                                                        </connections>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -260,12 +264,14 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKl-OL-qaA">
                                                         <rect key="frame" x="16" y="0.0" width="343" height="50"/>
+                                                        <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="FKl-OL-qaA" secondAttribute="bottom" id="Dpa-6d-f7A"/>
                                                     <constraint firstItem="FKl-OL-qaA" firstAttribute="leading" secondItem="XAp-t6-KD3" secondAttribute="leading" constant="16" id="GtO-8C-zY2"/>
@@ -273,6 +279,9 @@
                                                     <constraint firstItem="FKl-OL-qaA" firstAttribute="top" secondItem="XAp-t6-KD3" secondAttribute="top" id="ZoJ-3L-vgu"/>
                                                     <constraint firstAttribute="height" constant="50" placeholder="YES" id="ych-Hv-3jz"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="QSm-I0-z2V" appends="YES" id="eDC-GT-eXP"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -304,6 +313,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzY-Iv-MvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5hm-ep-SP6">
+                    <connections>
+                        <action selector="didTapAvatarImageView:" destination="S6z-KO-mW2" id="yAl-n4-4Bt"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="QSm-I0-z2V">
+                    <connections>
+                        <action selector="didTapPosts:" destination="S6z-KO-mW2" id="YpU-34-fcQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2775" y="311"/>
         </scene>
