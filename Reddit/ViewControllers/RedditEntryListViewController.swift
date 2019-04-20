@@ -50,6 +50,29 @@ class RedditEntryListViewController: RedditBaseViewController {
         
         let nibCell = UINib(nibName: String(describing: RedditEntryTableViewCell.self), bundle: Bundle(for: RedditEntryTableViewCell.self))
         self.entriesTableView.register(nibCell, forCellReuseIdentifier: String(describing: RedditEntryTableViewCell.self))
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshFetch), for: .valueChanged)
+        self.entriesTableView.refreshControl = refreshControl
+    }
+    
+    @objc private func refreshFetch() {
+        self.entriesPresenter.fetchEntries()
+    }
+    
+    private func loadMore() {
+        guard let lastEntryId = datasource.last?.id else { return }
+        self.entriesPresenter.fetchEntries(lastEntryId: lastEntryId)
+    }
+    
+    @IBAction func didTapDismissAllButton(_ sender: Any) {
+        self.entriesTableView.beginUpdates()
+        for index in 0..<datasource.count {
+            let indexPath = IndexPath(row: index, section: 0)
+            self.entriesTableView.deleteRows(at: [indexPath], with: .left)
+        }
+        self.datasource.removeAll()
+        self.entriesTableView.endUpdates()
     }
 }
 
@@ -60,12 +83,13 @@ extension RedditEntryListViewController: RedditEntriesViewProtocol {
             self.datasource += entries
         } else {
             self.datasource = entries
+            DispatchQueue.main.async {
+                self.entriesTableView.refreshControl?.endRefreshing()
+            }
         }
-        
     }
     
     func fetchFinishWithError(error: RedditNetworkResult.RedditNetworkError) {
-        // TODO: show error detail
         self.hideSpinner()
         self.showGenericAlert()
     }
@@ -82,6 +106,14 @@ extension RedditEntryListViewController: UITableViewDataSource {
         }
         cell.setup(with: datasource[indexPath.row])
         
+        cell.didTapDismissBlock = { cell in
+            guard let indexPath = self.entriesTableView.indexPath(for: cell) else { return }
+            self.entriesTableView.beginUpdates()
+            self.datasource.remove(at: indexPath.row)
+            self.entriesTableView.deleteRows(at: [indexPath], with: .left)
+            self.entriesTableView.endUpdates()
+        }
+        
         return cell
     }
 }
@@ -90,5 +122,11 @@ extension RedditEntryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.entriesTableView.deselectRow(at: indexPath, animated: true)
         self.showDetailViewController(RedditEntryDetailViewController(), sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == datasource.count - 1 {
+            loadMore()
+        }
     }
 }

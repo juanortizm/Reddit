@@ -76,7 +76,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="didTapDismissButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gte-qp-anX"/>
+                                            <action selector="didTapDismissButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="13B-Rk-slF"/>
                                         </connections>
                                     </button>
                                 </subviews>
